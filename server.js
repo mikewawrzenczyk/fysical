@@ -14,7 +14,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 //linking routes in our other classses
 const mainRoutes = require('./routes/main')
-const todoRoutes = require('./routes/todos')
+const todoRoutes = require('./routes/fysical')
 
 //tell express to use environment variables which is not built into node for some reason
 
@@ -52,11 +52,11 @@ app.use(passport.session())
 
 //setup flash alerts
 app.use(flash())
-  
+
 //start using routes
 app.use('/', mainRoutes)
-app.use('/todos', todoRoutes)
+// app.use('/', )
  
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')
-})    
+})

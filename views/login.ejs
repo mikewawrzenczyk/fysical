@@ -35,12 +35,17 @@
     <div class='jumbotron text-center'>
         <img src='images/cover.png' alt='fysical logo'>
         <p>A simple to use weight tracking application</p>
-        <div class="row">
-            <div class="col-4">
-                <p>Enter Weigth Loss Data</p>
+        <form class="form-inline">
+            <div class="input-group">
+            <input type="text" class="form-control" size="50" placeholder="First Name" id="firstName" required>
+            <input type="text" class="form-control" size="50" placeholder="First Name" id="lastName" required>
+            <input type="email" class="form-control" size="50" placeholder="Email Address" id="email" required>
+            <input type="password" class="form-control" size="50" placeholder="Password" id="password" required>
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-danger" id="Sign Up">Sign Up</button>
+              </div>
             </div>
-            <div class="col-8"></div>
-          </div>
+          </form>
     </div>  
     
 <footer class="container-fluid text-center">
@@ -50,6 +55,5 @@
     <p>fysical weight tracker application</p>
   </footer>
     <script src='js/main.js'></script>
-    <script src='js/chart.js' type='module'></script>
 </body>
 </html>

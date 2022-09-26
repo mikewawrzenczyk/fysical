@@ -2,7 +2,8 @@ const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 //Schema used as sort of a cosntructor for the object so that we setup how out database is structred
 const UserSchema = new mongoose.Schema({
-  userName: { type: String, unique: true },
+  firstName: { type: String},
+  lastName: { type: String},
   email: { type: String, unique: true },
   password: String
 })

@@ -1,0 +1,30 @@
+<%- include('partials/header') -%>
+
+<% if (locals.messages.errors) { %>
+  <% messages.errors.forEach( el => { %>
+      <div class="alert alert-danger"><%= el.msg %></div>
+  <% }) %>    
+<% } %>
+<% if (locals.messages.info) { %>
+  <% messages.info.forEach( el => { %>
+      <div class="alert alert-info"><%= el.msg %></div>
+  <% }) %>    
+<% } %>
+<div class='jumbotron text-center'>
+    <img src='images/cover.png' alt='fysical logo'>
+    <p>A simple to use weight tracking application</p>
+    <form action="/signup" method="POST" class="form-inline" >
+        <div class="input-group">
+        <input type="text" class="form-control" size="50" placeholder="First Name" id="firstName" name="firstName" required>
+        <input type="text" class="form-control" size="50" placeholder="Last Name" id="lastName" name="lastName" required>
+        <input type="email" class="form-control" size="50" placeholder="Email Address" id="email" name="email" required>
+        <input type="password" class="form-control" size="50" placeholder="Password" id="password" name="password" required>
+        <input type="password" class="form-control" size="50" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" required>
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-danger" id="Sign Up">Sign Up</button>
+          </div>
+        </div>
+      </form>
+</div>  
+
+<%- include('partials/footer') -%>

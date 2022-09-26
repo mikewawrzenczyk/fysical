@@ -1,59 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    
-    <title>Fysical Weight Tracker</title>
-</head>
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/login"><img src="images/navLogo.png"></a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#about">LOGIN</a></li>
-              <li><a href="#services">REGISTER</a></li>
-              <li><a href="#portfolio">ABOUT</a></li>
-            </ul>
-          </div>
-        </div>
-    </nav> 
-    <div class='jumbotron text-center'>
+<%- include('partials/header') -%>
+
+    <!-- <div class='jumbotron text-center'>
         <img src='images/cover.png' alt='fysical logo'>
         <p>A simple to use weight tracking application</p>
-        <form class="form-inline">
-            <div class="input-group">
-            <input type="text" class="form-control" size="50" placeholder="First Name" id="firstName" required>
-            <input type="text" class="form-control" size="50" placeholder="First Name" id="lastName" required>
-            <input type="email" class="form-control" size="50" placeholder="Email Address" id="email" required>
-            <input type="password" class="form-control" size="50" placeholder="Password" id="password" required>
-              <div class="input-group-btn">
-                <button type="button" class="btn btn-danger" id="Sign Up">Sign Up</button>
-              </div>
+        <section class="col-6 mt-5">
+          <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+          <div class="alert alert-danger"><%= el.msg %></div>
+          <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+          messages.info.forEach( el => { %>
+          <div class="alert alert-info"><%= el.msg %></div>
+          <% }) %> <% } %>
+          <form action="/login" method="POST">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Email address</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                name="email"
+              />
             </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                name="password"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-    </div>  
-    
-<footer class="container-fluid text-center">
-    <a href="#myPage" title="To Top">
-      <span class="glyphicon glyphicon-chevron-up"></span>
-    </a>
-    <p>fysical weight tracker application</p>
-  </footer>
-    <script src='js/main.js'></script>
-</body>
-</html>
+        </section>
+    </div>   -->
+    <div class='jumbotron text-center'>
+      <img src='images/cover.png' alt='fysical logo'>
+      <p>A simple to use weight tracking application</p>
+      <div class="d-flex flex-column align-items-center">
+      <main class="form-signin w-100 m-auto text">
+        <section class="col-6 mt-5">
+          <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+          <div class="alert alert-danger"><%= el.msg %></div>
+          <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+          messages.info.forEach( el => { %>
+          <div class="alert alert-info"><%= el.msg %></div>
+          <% }) %> <% } %>
+        </section>
+        <form action="/login" method="POST">
+          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+          <div class="form-floating">
+            <label for="floatingInput">Email address</label>
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+          </div>
+          <div class="form-floating">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+          </div>
+          <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
+        </form>
+      </main>
+      </div>
+    </div>
+    <%- include('partials/footer') -%>

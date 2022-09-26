@@ -14,7 +14,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 //linking routes in our other classses
 const mainRoutes = require('./routes/main')
-const todoRoutes = require('./routes/fysical')
+const fysicalRoutes = require('./routes/fysical')
 
 //tell express to use environment variables which is not built into node for some reason
 
@@ -45,6 +45,16 @@ app.use(
       store: new MongoStore({ mongooseConnection: mongoose.connection }),
     })
   )
+// app.use(
+//   session({
+//       secret: 'keyboard cat',
+//       resave: false,
+//       saveUninitialized: false,
+//       store: MongoStore.create({
+//           mongoUrl: process.env.MONGO_URI
+//       })
+//   })
+// );
   
 // Passport middleware
 app.use(passport.initialize())
@@ -55,7 +65,7 @@ app.use(flash())
 
 //start using routes
 app.use('/', mainRoutes)
-// app.use('/', )
+app.use('/', fysicalRoutes)
  
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')

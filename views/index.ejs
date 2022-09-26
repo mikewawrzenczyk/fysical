@@ -1,55 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    
-    <title>Fysical Weight Tracker</title>
-</head>
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/login"><img src="images/navLogo.png"></a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#about">LOGIN</a></li>
-              <li><a href="#services">REGISTER</a></li>
-              <li><a href="#portfolio">ABOUT</a></li>
-            </ul>
-          </div>
-        </div>
-    </nav> 
-    <div class='jumbotron text-center'>
-        <img src='images/cover.png' alt='fysical logo'>
-        <p>A simple to use weight tracking application</p>
-        <div class="row">
-            <div class="col-4">
-                <p>Enter Weigth Loss Data</p>
-            </div>
-            <div class="col-8"></div>
-          </div>
-    </div>  
-    
-<footer class="container-fluid text-center">
-    <a href="#myPage" title="To Top">
-      <span class="glyphicon glyphicon-chevron-up"></span>
-    </a>
-    <p>fysical weight tracker application</p>
-  </footer>
-    <script src='js/main.js'></script>
-    <script src='js/chart.js' type='module'></script>
-</body>
-</html>
+<%- include('partials/header') -%>
+
+
+<div class='jumbotron text-center'>
+  <img src='images/cover.png' alt='fysical logo'>
+  <p>A simple to use weight tracking application</p>
+  <p>Start your journey by tracking your weight and seeing progress over time!</p>
+  <div class="row d-flex justify-content-center">
+      <a href="/login" class="col-1 btn btn-danger btn-lg">Login</a>
+      <a href="/signup" class="col-1 btn btn-danger btn-lg">Signup</a>
+  </div>
+</div>
+  
+<%- include('partials/footer') -%>

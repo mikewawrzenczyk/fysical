@@ -2,9 +2,11 @@ const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
 
+
  exports.getLogin = (req, res) => {
     if (req.user) {
-      return res.redirect('/todos')
+      //this redirect happens if a user is already logged in
+      return res.redirect('/fysical')
     }
     res.render('login', {
       title: 'Login'
@@ -31,7 +33,7 @@ const User = require('../models/User')
       req.logIn(user, (err) => {
         if (err) { return next(err) }
         req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/todos')
+        res.redirect(req.session.returnTo || '/fysical')
       })
     })(req, res, next)
   }
@@ -48,35 +50,45 @@ const User = require('../models/User')
   }
   
   exports.getSignup = (req, res) => {
+    // console.log("inside get sign up")
     if (req.user) {
-      return res.redirect('/todos')
+      return res.redirect('/fysical')
     }
     res.render('signup', {
       title: 'Create Account'
     })
   }
   
+  //after sign up form is submitted
   exports.postSignup = (req, res, next) => {
+    // console.log(req)
+    // console.log('TEST')
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
     if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
     if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
   
     if (validationErrors.length) {
+      console.log('validation error?')
       req.flash('errors', validationErrors)
       return res.redirect('../signup')
     }
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
   
+   
+
     const user = new User({
-      userName: req.body.userName,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
       password: req.body.password
     })
+
+    // console.log(user)
   
     User.findOne({$or: [
       {email: req.body.email},
-      {userName: req.body.userName}
+      {userName: req.body.firstName}
     ]}, (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
@@ -86,10 +98,11 @@ const User = require('../models/User')
       user.save((err) => {
         if (err) { return next(err) }
         req.logIn(user, (err) => {
+          console.log('got to user entry')
           if (err) {
             return next(err)
           }
-          res.redirect('/todos')
+          res.redirect('/fysical')
         })
       })
     })

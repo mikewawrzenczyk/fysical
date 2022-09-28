@@ -1,16 +1,20 @@
-var options = {
-    chart: {
-      type: 'line'
+const ctx = document.getElementById('weightChart').getContext('2d');
+
+// console.log(weightData)
+const weightChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Sept 01', 'Sept 10', 'Sept 12', 'Sept 16', 'Sept 22', 'Sept 25'],
+        datasets: [{
+            label: 'Weight',
+            data: [280, 285, 278, 276, 280, 250],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
+        }]
     },
-    series: [{
-      name: 'sales',
-      data: [30,40,35,50,49,60,70,91,125]
-    }],
-    xaxis: {
-      categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
-    }
-  }
-  
-  var chart = new ApexCharts(document.querySelector("#chart"), options);
-  
-  chart.render();
+});

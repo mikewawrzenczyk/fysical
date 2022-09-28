@@ -2,8 +2,9 @@ const mongoose = require('mongoose')
 
 const FysicalSchema = new mongoose.Schema({
   weight: {
-    type: String,
+    type: Number,
     required: true,
+    default: 285
   },
   date: {
     type: Date,

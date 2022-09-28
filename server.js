@@ -44,18 +44,8 @@ app.use(
       saveUninitialized: false,
       store: new MongoStore({ mongooseConnection: mongoose.connection }),
     })
-  )
-// app.use(
-//   session({
-//       secret: 'keyboard cat',
-//       resave: false,
-//       saveUninitialized: false,
-//       store: MongoStore.create({
-//           mongoUrl: process.env.MONGO_URI
-//       })
-//   })
-// );
-  
+)
+
 // Passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
@@ -65,7 +55,7 @@ app.use(flash())
 
 //start using routes
 app.use('/', mainRoutes)
-app.use('/', fysicalRoutes)
+app.use('/fysical', fysicalRoutes)
  
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')

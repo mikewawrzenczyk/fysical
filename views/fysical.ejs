@@ -1,13 +1,75 @@
 <%- include('partials/headerLogin') -%>
-<div class="container">
-    <div class="row">
-        <div class="col wf">Test</div>
-    </div>
+  <div class="container">
 
     <div class="row">
-        <div class="col wf">Test</div>
-        <div class="col wf">Test</div>
-        <div class="col wf">Test</div>
+        <div class="col wf">
+            <main class="form-signin w-100 m-auto text">
+                <section class="col-6 mt-5">
+                  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+                  <div class="alert alert-danger"><%= el.msg %></div>
+                  <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+                  messages.info.forEach( el => { %>
+                  <div class="alert alert-info"><%= el.msg %></div>
+                  <% }) %> <% } %>
+                </section>
+                <form action="/fysical/addWeight" method="POST">
+                  <h1 class="h3 mb-3 fw-normal">Enter Weight</h1>
+                  <div class="form-floating">
+                    <input type="number" class="form-control" id="weight" aria-describedby="weight" name="weight" value="285">
+                    <label for="weight">Weight</label>
+                  </div>
+                  <div class="form-floating">
+                    <input type="date" class="form-control" id="date" name="date" value="2022-09-26">
+                    <label for="date">Date</label>
+                  </div>
+                  <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
+                </form>
+            </main>
+        </div>
+
+        <div class="col wf">
+           
+                <section class="col-6 mt-5">
+                  <h1 class="h3 mb-3 fw-normal">Display Graph</h1>
+                  <canvas id="weightChart" width="400" height="400"></canvas>
+
+                </section>
+          
+        </div>
     </div>
-</div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col wf">
+        <h1>Historial Weight Data</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Weight</th>
+              <th scope="col">Date</th>
+              <th scope="col">Progress</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=1; i < weightData.length; i++) {%>
+            <tr><%= //console.log(weightData[i].weight) %>
+              <th scope="row"><%= weightData[i].weight %></th>
+              <td><%= weightData[i].date %></td>
+              <td>
+                <% if(weightData[i].weight < weightData[i-1].weight) { %>
+                  <i class="fa-solid fa-arrow-down"></i>
+                <%} else { %>
+                  <i class="fa-solid fa-arrow-up"></i>
+                <% } %>
+              </td>
+              <td><i class="fa-solid fa-trash"></i></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
 <%- include('partials/footer') -%>

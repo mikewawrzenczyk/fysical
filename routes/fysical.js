@@ -3,10 +3,10 @@ const router = express.Router()
 const fysicalController = require('../controllers/fysical') 
 const { ensureAuth } = require('../middleware/auth')
 
-router.get('/', ensureAuth, fysicalController.getTodos)
+router.get('/', ensureAuth, fysicalController.getData)
 
 
-// router.post('/createTodo', todosController.createTodo)
+router.post('/addWeight', fysicalController.addWeight)
 
 // router.put('/markComplete', todosController.markComplete)
 

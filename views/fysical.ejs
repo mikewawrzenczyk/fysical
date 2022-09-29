@@ -56,7 +56,7 @@
               <th scope="row"><%= weightData[i].weight %></th>
               <td><%= weightData[i].date %></td>
               <td>
-                <% if(weightData[i].weight < weightData[i-1].weight) { %>
+                <% if(Number(weightData[i-1].weight) < Number(weightData[i].weight)) { %>
                   <i class="fa-solid fa-arrow-down"></i>
                 <%} else { %>
                   <i class="fa-solid fa-arrow-up"></i>

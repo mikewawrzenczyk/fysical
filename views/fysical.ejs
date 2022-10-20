@@ -26,11 +26,12 @@
                 </form>
             </main>
         </div>
-
+ 
+        
         <div class="col wf">
                 <section class="col-6 mt-5">
                   <h1 class="h3 mb-3 fw-normal">Display Graph</h1>
-                  <canvas id="weightChart" width="400" height="400"></canvas>
+                  <canvas id="weightChart" width="600" height="600"></canvas>
 
                 </section>
           
@@ -50,21 +51,34 @@
               <th scope="col"></th>
             </tr>
           </thead>
+          <!-- +1 for weight array makes it underfined for some reason.my -->
           <tbody>
-            <% for(let i=1; i < weightData.length; i++) {%>
-            <tr><%= //console.log(weightData[i].weight) %>
-              <th scope="row"><%= weightData[i].weight %></th>
-              <td><%= weightData[i].date %></td>
-              <td>
-                <% if(Number(weightData[i-1].weight) < Number(weightData[i].weight)) { %>
-                  <i class="fa-solid fa-arrow-down"></i>
-                <%} else { %>
-                  <i class="fa-solid fa-arrow-up"></i>
-                <% } %>
-              </td>
-              <td><i class="fa-solid fa-trash"></i></td>
-            </tr>
-            <% } %>
+            <% for(let i=0; i < weightData.length; i++) {%>
+              <tr><%= //console.log(weightData[i].weight) %><%= //console.log(weightData.length) %>
+                <th scope="row"><%= weightData[i].weight %></th>
+                <td><%= weightData[i].date.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: '2-digit',
+              }) %></td>
+                <td>
+                  <% if(i < weightData.length -1) { %>
+                    <% if(Number(weightData[i].weight) < Number(weightData[i+1].weight)) { %>
+                      <i class="fa-solid fa-arrow-down"></i>
+                    <%} else if(Number(weightData[i].weight) == Number(weightData[i+1].weight)) {%>
+                      <i class="fa-solid fa-equals"></i>
+                    <%} else { %>
+                      <i class="fa-solid fa-arrow-up"></i>
+                    <% } %>
+                  <% } %>
+                </td>
+                <td>
+                  <form action="/fysical/deleteWeight/<%=weightData[i]._id%>?_method=DELETE" method="POST" class="col-3">
+                    <button class="btn btn-primary fa fa-trash" type="submit"></button>
+                  </form>
+                </td>
+              </tr>
+              <% } %>
           </tbody>
         </table>
       </div>

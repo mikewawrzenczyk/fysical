@@ -41,14 +41,6 @@
       <p>A simple to use weight tracking application</p>
       <div class="d-flex flex-column align-items-center">
       <main class="form-signin w-100 m-auto text">
-        <section class="col-6 mt-5">
-          <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-          <div class="alert alert-danger"><%= el.msg %></div>
-          <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-          messages.info.forEach( el => { %>
-          <div class="alert alert-info"><%= el.msg %></div>
-          <% }) %> <% } %>
-        </section>
         <form action="/login" method="POST">
           <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
           <div class="form-floating">
@@ -62,6 +54,14 @@
           <button type="submit" class="w-100 btn btn-lg btn-primary">Submit</button>
         </form>
       </main>
+      <section class="col-6 mt-5">
+        <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+        <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+        messages.info.forEach( el => { %>
+        <div class="alert alert-info"><%= el.msg %></div>
+        <% }) %> <% } %>
+      </section>
       </div>
     </div>
     <%- include('partials/footer') -%>

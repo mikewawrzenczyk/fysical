@@ -1,0 +1,21 @@
+const ctx = document.getElementById('weightChart').getContext('2d');
+
+
+
+const weightChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [<%= weightData[0].date %>, 'Sept 29'],
+        datasets: [{
+            label: 'Weight',
+            data: [<%= weightData[0].weight %>, 185],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+});

@@ -5,8 +5,12 @@ const { ensureAuth } = require('../middleware/auth')
 
 router.get('/', ensureAuth, fysicalController.getData)
 
+router.get('/chart', ensureAuth, fysicalController.getChart)
+
 
 router.post('/addWeight', fysicalController.addWeight)
+
+router.post('/deleteWeight/:id', fysicalController.deleteWeight)
 
 // router.put('/markComplete', todosController.markComplete)
 

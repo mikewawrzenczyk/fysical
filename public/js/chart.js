@@ -7,10 +7,10 @@ fetch('/fysical/chart')
         const charty = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: data.chartDate,
+                labels: data.chartDate.reverse(),
                 datasets: [{
                     label: 'Weight',
-                    data: data.chartWeight,
+                    data: data.chartWeight.reverse(),
                     backgroundColor: [
                         'rgba(54, 162, 235, 0.2)'
                     ],
